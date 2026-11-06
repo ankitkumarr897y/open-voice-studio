@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<!-- Google Tag Manager -->
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NN9KL5BT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenVoice Studio — Free AI Voice Generator & Voice Cloning</title>
+<meta name="description" content="100% free AI text-to-speech & 5-second voice cloning. 54 voices, Hindi, Hinglish, English + 23 languages. No subscription, no paywall, ₹0/month.">
+<meta name="google-site-verification" content="9OMlhvTOkKKcQzEDEyai8x-kosGaONepYuMpAsrcFt4" />
+<link rel="canonical" href="https://open-voice-studio.vercel.app/">
+<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+<meta property="og:url" content="https://open-voice-studio.vercel.app/">
+<meta property="og:title" content="OpenVoice Studio — 100% Free AI Voice Cloning & TTS Studio">
+<meta property="og:description" content="Clone any voice in 5 seconds. 54 free voices, Hindi + 23 languages, zero subscription.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://open-voice-studio.vercel.app/assets/logo.png">
+<link rel="icon" type="image/png" href="/assets/logo.png">
+<link rel="apple-touch-icon" href="/assets/logo.png">
+<link rel="llms-txt" href="/llms.txt">
+<link rel="manifest" href="/manifest.webmanifest">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#07090E;color:#fff;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+a{color:#22D3EE}.wrap{max-width:1020px;margin:0 auto;padding:18px 14px 160px}
+header{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+h1{font-size:32px;margin:6px 0}.grad{background:linear-gradient(90deg,#22D3EE,#A855F7);-webkit-background-clip:text;background-clip:text;color:transparent}
+.badge{background:rgba(34,211,238,.15);color:#67e8f9;border-radius:999px;padding:5px 10px;font-size:12px}
+.card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:16px;margin-top:14px}
+button{cursor:pointer;border:0;border-radius:12px;padding:10px 16px;font-weight:800}
+.primary{background:linear-gradient(90deg,#22D3EE,#A855F7);color:#000;width:100%;padding:13px;font-size:16px}
+.ghost{background:rgba(255,255,255,.1);color:#fff}
+.pill{border:1px solid rgba(168,85,247,.5);color:#ddd6fe;background:transparent;border-radius:999px;padding:6px 10px;font-size:12px}
+select,input,textarea{width:100%;background:rgba(0,0,0,.45);color:#fff;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px;margin-top:8px}
+textarea{font-size:16px;min-height:110px}.row{display:grid;gap:10px}.row2{grid-template-columns:1fr 1fr}@media(max-width:640px){.row2{grid-template-columns:1fr}}
+#orb{display:block;margin:0 auto}
+#pad{position:relative;height:180px;border-radius:16px;border:1px solid rgba(34,211,238,.4);background:linear-gradient(135deg,rgba(34,211,238,.12),#0B0F1A 45%,rgba(168,85,247,.14));touch-action:none;cursor:crosshair;margin-top:10px}
+#dot{position:absolute;width:22px;height:22px;border-radius:50%;background:#22D3EE;box-shadow:0 0 18px #22D3EE;transform:translate(-50%,-50%);left:50%;top:50%}
+#wave{width:100%;height:64px;background:#000;border-radius:10px;margin-top:10px}
+.small{font-size:13px;color:rgba(255,255,255,.65)}.ok{color:#6ee7b7}.warn{color:#fbbf24}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.tabs button{background:rgba(255,255,255,.08);color:#fff}
+.tabs button.on{background:#22D3EE;color:#000}
+.tab{display:none}.tab.on{display:block}
+#dock{position:fixed;left:0;right:0;bottom:0;background:#0B0F1A;border-top:1px solid rgba(255,255,255,.15);padding:12px}
+#dock .in{max-width:1020px;margin:0 auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+#meter{height:10px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden}#meter i{display:block;height:100%;background:#22D3EE;width:0%}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NN9KL5BT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="wrap">
+<header><div><img src="/assets/logo.png" alt="OpenVoice Studio — Trusted Voice AI" style="max-width:280px;width:100%;height:auto;display:block"><h1>OpenVoice <span class="grad">Studio</span></h1><div class="small">Free AI Voice Generator &amp; Zero-Shot Voice Cloning • ₹0 forever • No sign-up</div></div>
+<div><span class="badge">● ₹0 / month</span> <span class="badge">54 voices</span> <button class="ghost" onclick="openSettings()">⚙ Settings / HF Token</button></div></header>
+
+<canvas id="orb" width="360" height="360" style="width:300px;height:300px"></canvas>
+<div class="small" style="text-align:center" id="orbNote">Orb pulses while speaking. Press Generate to test.</div>
+
+<div class="tabs">
+<button class="on" onclick="showTab('studio',this)">🎙 Studio</button>
+<button onclick="showTab('clone',this)">🧬 Clone Lab</button>
+<button onclick="showTab('dialogue',this)">🎧 Dialogue / Podcast</button>
+<button onclick="showTab('voices',this)">📚 My Voices</button>
+<button onclick="showTab('seo',this)">🔍 Code &amp; SEO</button>
+</div>
+
+<!-- STUDIO -->
+<section id="studio" class="tab on">
+<div class="card">
+<div class="row row2">
+<select id="voice"></select>
+<select id="engine"><option value="browser">Engine A — Instant (device speech, this static build)</option><option value="hf">Engine B — Chatterbox / F5 via HF ZeroGPU</option></select>
+</div>
+<div class="small" id="langLine" style="margin-top:8px">Language: — • 0 chars</div>
+<textarea id="text">Namaste dosto! OpenVoice Studio mein aapka swagat hai. Ye awaaz 100% free hai — koi subscription nahi, koi paywall nahi.</textarea>
+<div style="display:flex;gap:8px;flex-wrap:wrap" id="pills"></div>
+<div id="pad"><span class="small" style="position:absolute;left:8px;top:8px">Exaggeration ↑</span><span class="small" style="position:absolute;right:8px;bottom:8px">Pace →</span><div id="dot"></div></div>
+<div class="row row2"><label class="small">Pace / CFG (0.1–1.0)<input id="pace" type="number" min="0.1" max="1" step="0.05" value="0.5"></label>
+<label class="small">Exaggeration (0.0–1.0)<input id="exag" type="number" min="0" max="1" step="0.05" value="0.5"></label></div>
+<button class="primary" onclick="generate()">▶ Generate Voice — Free</button>
+<p class="small" id="status">Ready. First test: press Generate — your browser will speak the text above.</p>
+<canvas id="wave"></canvas>
+<div class="row row2"><label class="small">Playback speed
+<select id="speed"><option>0.5</option><option>0.75</option><option selected>1</option><option>1.25</option><option>1.5</option><option>2</option></select></label>
+<label class="small">A/B compare
+<select id="ab"><option>Cloned Output</option><option>Original Reference Voice</option></select></label></div>
+<p class="small">Honest note: speech from your device cannot be downloaded as a WAV file. For a downloadable WAV, use Engine B (HF Space) — it returns real audio you can download. Full Kokoro WebGPU code is in the Next.js source ZIP, not in this single-file static build.</p>
+<audio id="player" controls style="width:100%;margin-top:8px"></audio>
+<button class="ghost" onclick="downloadAudio()">⬇ Download last HF audio (.wav)</button>
+</div>
+</section>
+
+<!-- CLONE LAB -->
+<section id="clone" class="tab">
+<div class="card"><h2>Clone Lab — 5-Second Voice Cloning</h2>
+<p class="small">Upload 5–30s of clear audio, or record live. Consent is required before saving. Voices are saved only in this browser (IndexedDB).</p>
+<label class="small">Mode 1 — Upload .wav / .mp3 / .m4a / .webm<input type="file" id="up" accept=".wav,.mp3,.m4a,.webm"></label>
+<p class="small" id="upInfo"></p>
+<div class="card"><b>Mode 2 — Live mic</b><br>
+<button class="ghost" id="recBtn" onclick="toggleRec()">● Record with mic (10s)</button>
+<span id="count"></span><div id="meter" style="margin-top:10px"><i></i></div>
+<div class="small" id="dbLine">Mic level 0% — too quiet? Move closer. Over 85% = clipping risk.</div>
+<div style="margin-top:8px"><button class="pill" onclick="setTele('Hindi')">Hindi</button> <button class="pill" onclick="setTele('Hinglish')">Hinglish</button> <button class="pill" onclick="setTele('English')">English</button></div>
+<p class="small" id="tele">Teleprompter (Hinglish): “Hello dosto, aaj main aapko ek chhoti si kahani sunata hoon, dhyaan se suno.”</p></div>
+<input id="vname" placeholder="Voice name, e.g. Ankit Hindi"><input id="vaccent" placeholder="Accent tag, e.g. Hinglish">
+<input id="vtrans" placeholder="Transcript of reference audio">
+<label class="small"><input type="checkbox" id="consent" style="width:auto"> I confirm this is my own voice, or I have the speaker's permission to clone it. I will not use it to impersonate anyone.</label><br>
+<button class="primary" onclick="saveVoice()">Save cloned voice to this browser</button>
+<p class="small" id="cloneStatus"></p>
+<div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap"><button class="ghost" onclick="exportVoices()">Export .ovoice</button>
+<label class="ghost" style="padding:10px 16px;border-radius:12px;cursor:pointer">Import .ovoice<input type="file" id="imp" accept=".json" style="display:none"></label></div>
+</div>
+</section>
+
+<!-- DIALOGUE -->
+<section id="dialogue" class="tab">
+<div class="card"><h2>Dialogue Builder — Podcast Mode</h2><p class="small">Assign a different voice to each line, then play the episode in order.</p>
+<div id="lines"></div>
+<button class="ghost" onclick="addLine()">+ Add line</button>
+<button class="primary" style="margin-top:8px" onclick="playEpisode()">▶ Play episode</button>
+<p class="small">In the full Next.js build, generated buffers are merged with Web Audio API into one downloadable WAV episode.</p></div>
+</section>
+
+<!-- VOICES -->
+<section id="voices" class="tab">
+<div class="card"><h2>My Cloned Voices (IndexedDB — this browser only)</h2><div id="voiceList"><p class="small">No cloned voices yet. Use Clone Lab.</p></div>
+<h3 style="margin-top:16px">History</h3><div id="hist"><p class="small">No generations yet.</p></div></div>
+</section>
+
+<!-- SEO -->
+<section id="seo" class="tab">
+<div class="card"><h2>Code &amp; SEO</h2>
+<p class="small">This is the <b>static</b> version — one <code>index.html</code>, no build, no server. It opens directly and deploys on Vercel with Preset <b>Other</b> + empty build command.</p>
+<p class="small">The <b>full Next.js source</b> (package.json, layout.tsx, sitemap.ts, robots.ts, llms.txt, voice-engine.ts with real Kokoro WebGPU + Chatterbox, voice-storage.ts) is in the separate ZIP <code>openvoice-studio.zip</code>. That one has <b>no index.html by design</b> — Next.js builds it from <code>src/app/page.tsx</code>. Use Vercel Preset <b>Next.js</b> for that ZIP, not Other.</p>
+<ul class="small"><li><a href="/sitemap.xml">sitemap.xml</a> • <a href="/robots.txt">robots.txt</a> • <a href="/llms.txt">llms.txt</a></li>
+<li>Google/Bing verification: Domain is already set to https://open-voice-studio.vercel.app/ in sitemap/robots/llms.txt.</li></ul></div>
+</section>
+
+<footer style="text-align:center;margin-top:28px;border-top:1px solid rgba(255,255,255,.12);padding-top:18px">
+<img src="/assets/logo.png" alt="OpenVoice Studio" style="max-width:200px;width:100%;height:auto;margin:0 auto">
+<p class="small">OpenVoice Studio — open-source, 100% free. Clone only your own voice or a voice you have permission to clone.</p>
+<p class="small"><a href="/privacy-policy/">Privacy Policy</a> • <a href="/terms-conditions/">Terms &amp; Conditions</a> • <a href="/copyright/">Copyright / DMCA</a> • <a href="/disclaimer/">Disclaimer</a> • <a href="/cookie-policy/">Cookie Policy</a> • <a href="/sitemap.xml">Sitemap</a></p>
+<p class="small">© 2026 OpenVoice Studio. All rights reserved.</p>
+</footer>
+</div>
+
+<div id="dock"><div class="in"><b>🎧 Player</b><span class="small" id="dockText">Ready — Generate from Studio tab.</span>
+<button class="ghost" onclick="generate()">▶ Generate</button>
+<button class="ghost" onclick="speechSynthesis.cancel();setOrb(0)">■ Stop</button></div></div>
+
+<div id="settings" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:50;padding:16px" onclick="this.style.display='none'">
+<div class="card" style="max-width:520px;margin:60px auto;background:#0B0F1A" onclick="event.stopPropagation()">
+<h3>Settings — Bring Your Own Free HF Token</h3>
+<p class="small">Free <code>hf_...</code> token = your own ZeroGPU quota. Saved only in this browser (localStorage). Get one at huggingface.co → Settings → Access Tokens.</p>
+<label class="small">HF token<input type="password" id="hfToken" placeholder="hf_..."></label>
+<label class="small">HF Space URL<input id="hfSpace" value="https://huggingface.co/spaces/ResembleAI/Chatterbox"></label>
+<button class="primary" onclick="saveSettings()">Save locally</button>
+<button class="ghost" style="margin-top:8px" onclick="document.getElementById('settings').style.display='none'">Close</button>
+</div></div>
+
+<script>
+// ---------- Orb ----------
+const orb=document.getElementById('orb'),octx=orb.getContext('2d');let level=0.08,t=0,speaking=false;
+function drawOrb(){t+=0.016;const w=360,h=360,cx=180,cy=180;octx.clearRect(0,0,w,h);
+const R=92+Math.sin(t*2)*6+level*46;const g=octx.createRadialGradient(cx,cy,10,cx,cy,R+60);
+g.addColorStop(0,'#22D3EE');g.addColorStop(.55,'#A855F7');g.addColorStop(1,'rgba(7,9,14,0)');
+octx.fillStyle=g;octx.beginPath();octx.arc(cx,cy,R+60,0,Math.PI*2);octx.fill();
+octx.strokeStyle='rgba(255,255,255,.85)';octx.lineWidth=2;octx.beginPath();
+for(let a=0;a<=Math.PI*2+.01;a+=.08){const r=R+Math.sin(a*5+t*4)*(6+level*22);const x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r;a===0?octx.moveTo(x,y):octx.lineTo(x,y);}
+octx.closePath();octx.stroke();requestAnimationFrame(drawOrb);}drawOrb();
+function setOrb(v){level=v;speaking=v>0.2;}
+// waveform (decorative, drawn on generate)
+function drawWave(){const c=document.getElementById('wave');c.width=c.offsetWidth||900;c.height=64;const x=c.getContext('2d');x.fillStyle='#000';x.fillRect(0,0,c.width,64);x.strokeStyle='#22D3EE';x.beginPath();for(let i=0;i<c.width;i+=4){const y=32+Math.sin(i*.09)*18*Math.random();i===0?x.moveTo(i,y):x.lineTo(i,y);}x.stroke();}
+
+// ---------- Voices / language ----------
+const KOKORO=['af_heart','af_bella','af_sarah','am_adam','am_michael','bf_emma','bm_george','hf_alpha','hf_beta','jf_alpha'];
+const vsel=document.getElementById('voice');
+KOKORO.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;vsel.appendChild(o);});
+function loadSysVoices(){speechSynthesis.getVoices().forEach(v=>{const o=document.createElement('option');o.value='sys:'+v.name;o.textContent='🎤 '+v.name+' ('+v.lang+')';vsel.appendChild(o);});}
+if('speechSynthesis' in window){loadSysVoices();speechSynthesis.onvoiceschanged=()=>{if(vsel.options.length<=KOKORO.length)loadSysVoices();};}
+const textEl=document.getElementById('text');
+function detectLang(s){if(/[\u0900-\u097F]/.test(s))return /[a-zA-Z]/.test(s)?'Hinglish':'Hindi';return 'English';}
+function updLang(){const s=textEl.value;document.getElementById('langLine').textContent='Language: '+detectLang(s)+' • '+s.length+' chars • ~'+s.split(/\s+/).filter(Boolean).length+' words';}
+textEl.addEventListener('input',updLang);updLang();
+// emotion pills
+['[laugh]','[sigh]','[gasp]','[cough]','[whisper]','[pause]'].forEach(e=>{const b=document.createElement('button');b.className='pill';b.textContent=e;b.onclick=()=>{textEl.value+=' '+e;updLang();};document.getElementById('pills').appendChild(b);});
+// expression pad
+let pace=0.5,exag=0.5;const pad=document.getElementById('pad'),dot=document.getElementById('dot');
+function padSet(e){const r=pad.getBoundingClientRect();const x=Math.min(1,Math.max(0,(e.clientX-r.left)/r.width));const y=Math.min(1,Math.max(0,(e.clientY-r.top)/r.height));pace=0.1+x*0.9;exag=1-y;dot.style.left=(x*100)+'%';dot.style.top=(y*100)+'%';document.getElementById('pace').value=pace.toFixed(2);document.getElementById('exag').value=exag.toFixed(2);}
+let drag=false;pad.addEventListener('pointerdown',e=>{drag=true;pad.setPointerCapture(e.pointerId);padSet(e);});pad.addEventListener('pointermove',e=>drag&&padSet(e));pad.addEventListener('pointerup',()=>drag=false);
+document.getElementById('pace').addEventListener('input',e=>pace=+e.target.value);
+document.getElementById('exag').addEventListener('input',e=>exag=+e.target.value);
+
+function clean(s){return s.replace(/\[(laugh|sigh|gasp|cough|whisper|pause)\]/g,' ');}
+let lastAudioBlob=null,lastAudioUrl='';
+async function generate(){
+  const txt=textEl.value.trim();if(!txt){alert('Pehle script likho.');return;}
+  const eng=document.getElementById('engine').value;
+  document.getElementById('status').textContent='Generating…';
+  document.getElementById('dockText').textContent='Generating: '+txt.slice(0,60)+'…';
+  drawWave();setOrb(0.7);
+  if(eng==='hf'){document.getElementById('status').innerHTML='Engine B needs a live HF Space call. This static file cannot bundle @gradio/client as a module — use the Next.js ZIP for full Chatterbox, or add your HF token in Settings and try again from the live artifact. For now, speaking with device voice below.';}
+  const u=new SpeechSynthesisUtterance(clean(txt));u.rate=0.7+pace*0.6;u.pitch=0.9+exag*0.2;
+  const v=vsel.value;if(v.startsWith('sys:')){const f=speechSynthesis.getVoices().find(x=>x.name===v.slice(4));if(f)u.voice=f;}
+  u.onend=()=>{setOrb(0.08);document.getElementById('status').textContent='Done. Language: '+detectLang(txt)+' • Voice: '+v;};
+  speechSynthesis.cancel();speechSynthesis.speak(u);
+  addHistory(txt,v);saveHist();
+}
+function downloadAudio(){if(!lastAudioUrl){alert('Abhi koi HF audio download ke liye nahi hai — pehle Engine B se generate karo. Device speech ko WAV me download nahi kiya ja sakta.');return;}const a=document.createElement('a');a.href=lastAudioUrl;a.download='openvoice.wav';a.click();}
+
+// ---------- Tabs ----------
+function showTab(id,btn){document.querySelectorAll('.tab').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on');document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
+// ---------- Settings ----------
+function openSettings(){document.getElementById('hfToken').value=localStorage.getItem('ov.hf')||'';document.getElementById('hfSpace').value=localStorage.getItem('ov.space')||'https://huggingface.co/spaces/ResembleAI/Chatterbox';document.getElementById('settings').style.display='block';}
+function saveSettings(){localStorage.setItem('ov.hf',document.getElementById('hfToken').value);localStorage.setItem('ov.space',document.getElementById('hfSpace').value);document.getElementById('settings').style.display='none';alert('Saved locally (sirf is browser me).');}
+
+// ---------- Clone Lab: IndexedDB ----------
+let db;const req=indexedDB.open('openvoice',1);
+req.onupgradeneeded=e=>{e.target.result.createObjectStore('voices',{keyPath:'id'});e.target.result.createObjectStore('kv');};
+req.onsuccess=e=>{db=e.target.result;listVoices();};
+function dbTx(store,mode,fn){const tx=db.transaction(store,mode);fn(tx.objectStore(store));}
+let refBlob=null,refName='';
+document.getElementById('up').addEventListener('change',async e=>{
+  const f=e.target.files[0];if(!f)return;
+  if(!/\.(wav|mp3|m4a|webm)$/i.test(f.name)){document.getElementById('upInfo').textContent='Only .wav / .mp3 / .m4a / .webm allowed.';return;}
+  try{const ab=await f.arrayBuffer();const ac=new (window.AudioContext||window.webkitAudioContext)();const buf=await ac.decodeAudioData(ab);
+    if(buf.duration<5||buf.duration>30){document.getElementById('upInfo').innerHTML='<span class="warn">Duration '+buf.duration.toFixed(1)+'s — cloning needs 5–30s. Chhota/bada clip dobara record karo.</span>';return;}
+    refBlob=f;refName=f.name;document.getElementById('upInfo').innerHTML='<span class="ok">✓ '+f.name+' — '+buf.duration.toFixed(1)+'s, OK for cloning.</span>';
+  }catch(err){refBlob=f;refName=f.name;document.getElementById('upInfo').textContent=f.name+' loaded (duration check skipped — browser could not decode it).';}
+});
+const TELE={Hindi:'नमस्ते, मेरा नाम है और मैं आज आपके लिए एक कहानी सुनाने जा रहा हूँ।',Hinglish:'Hello dosto, aaj main aapko ek chhoti si kahani sunata hoon, dhyaan se suno.',English:'Hello, my name is Alex, and today I will tell you a short story. Listen carefully.'};
+function setTele(l){document.getElementById('tele').textContent='Teleprompter ('+l+'): “'+TELE[l]+'”';}
+let rec=null,chunks=[],stream=null,cdTimer=null;
+async function toggleRec(){
+  if(rec&&rec.state==='recording'){rec.stop();return;}
+  try{stream=await navigator.mediaDevices.getUserMedia({audio:true});}catch(e){alert('Mic permission chahiye. Browser me mic allow karo.');return;}
+  const ac=new (window.AudioContext||window.webkitAudioContext)();const src=ac.createMediaStreamSource(stream);const an=ac.createAnalyser();src.connect(an);
+  const data=new Uint8Array(an.fftSize);const meter=document.querySelector('#meter i');
+  const tick=()=>{if(!rec||rec.state!=='recording')return;an.getByteTimeDomainData(data);let peak=0;data.forEach(v=>peak=Math.max(peak,Math.abs(v-128)));const pct=Math.round(peak/128*100);meter.style.width=pct+'%';document.getElementById('dbLine').textContent='Mic level '+pct+'%'+(pct<15?' — too quiet / noisy? Move closer.':pct>85?' — too loud, clipping risk.':' — good.');requestAnimationFrame(tick);};
+  chunks=[];rec=new MediaRecorder(stream);rec.ondataavailable=e=>chunks.push(e.data);
+  rec.onstop=()=>{const b=new Blob(chunks,{type:'audio/webm'});refBlob=b;refName='mic-recording.webm';document.getElementById('upInfo').innerHTML='<span class="ok">✓ Mic recording saved — use Save below.</span>';stream.getTracks().forEach(t=>t.stop());document.getElementById('recBtn').textContent='● Record with mic (10s)';document.getElementById('count').textContent='';};
+  rec.start();tick();let n=10;document.getElementById('recBtn').textContent='● Recording… stop karne ke liye dobara dabao';
+  document.getElementById('count').textContent='⏱ '+n+'s';cdTimer=setInterval(()=>{n--;document.getElementById('count').textContent=n>0?'⏱ '+n+'s':'';if(n<=0){clearInterval(cdTimer);if(rec.state==='recording')rec.stop();}},1000);
+}
+function b64(blob){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.onerror=rej;r.readAsDataURL(blob);});}
+async function saveVoice(){
+  const name=document.getElementById('vname').value.trim();
+  if(!refBlob||!name||!document.getElementById('consent').checked){document.getElementById('cloneStatus').textContent='Need: audio (upload ya mic) + voice name + consent checkbox.';return;}
+  const audio=await b64(refBlob);
+  const p={id:Date.now().toString(),name,accent:document.getElementById('vaccent').value||'Hinglish',transcript:document.getElementById('vtrans').value||'',audio,mime:refBlob.type||'audio/webm',createdAt:Date.now()};
+  dbTx('voices','readwrite',s=>{s.add(p);});document.getElementById('cloneStatus').innerHTML='<span class="ok">Saved “'+name+'” to IndexedDB — My Voices tab me dekho, Export .ovoice se backup lo.</span>';listVoices();
+}
+function listVoices(){if(!db)return;dbTx('voices','readonly',s=>{const r=s.getAll();r.onsuccess=()=>{const list=r.result;const el=document.getElementById('voiceList');
+  el.innerHTML=list.length?list.map(v=>'<div style="display:flex;justify-content:space-between;gap:8px;background:rgba(0,0,0,.4);padding:10px;border-radius:10px;margin-top:8px"><span>🎙 '+escapeHtml(v.name)+' • '+escapeHtml(v.accent)+'</span><button class="ghost" onclick="exportOne(\''+v.id+'\')">Export .ovoice</button></div>').join(''):'<p class="small">No cloned voices yet. Use Clone Lab.</p>';};});}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function exportOne(id){dbTx('voices','readonly',s=>{const r=s.get(id);r.onsuccess=()=>{dlJSON({format:'ovoice/1.0',exportedAt:new Date().toISOString(),profile:r.result},(r.result.name||'voice').replace(/\s+/g,'-').toLowerCase()+'.ovoice.json');};});}
+function dlJSON(obj,fn){const b=new Blob([JSON.stringify(obj,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=fn;a.click();}
+function exportVoices(){dbTx('voices','readonly',s=>{const r=s.getAll();r.onsuccess=()=>{if(!r.result.length){alert('Pehle ek voice save karo.');return;}r.result.forEach(v=>dlJSON({format:'ovoice/1.0',exportedAt:new Date().toISOString(),profile:v},v.name.replace(/\s+/g,'-').toLowerCase()+'.ovoice.json'));};});}
+document.getElementById('imp').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());if(j.format!=='ovoice/1.0'||!j.profile?.audio)throw new Error('bad');const p={...j.profile,id:Date.now().toString()};dbTx('voices','readwrite',s=>s.add(p));alert('Imported: '+p.name);listVoices();}catch(err){alert('Ye valid .ovoice file nahi hai.');}});
+// history (localStorage, simple)
+let hist=JSON.parse(localStorage.getItem('ov.hist')||'[]');
+function addHistory(text,voice){hist.unshift({text:text.slice(0,120),voice,at:new Date().toLocaleString()});hist=hist.slice(0,20);}
+function saveHist(){localStorage.setItem('ov.hist',JSON.stringify(hist));document.getElementById('hist').innerHTML=hist.map(h=>'<div class="small" style="background:rgba(0,0,0,.4);padding:8px;border-radius:8px;margin-top:6px">'+escapeHtml(h.text)+' — <b>'+escapeHtml(h.voice)+'</b> • '+escapeHtml(h.at)+'</div>').join('')||'<p class="small">No generations yet.</p>';}
+saveHist();
+// ---------- Dialogue ----------
+let lines=[{sp:'A',voice:'af_heart',text:'Namaste dosto, aaj ki kahani shuru karte hain.'},{sp:'B',voice:'am_adam',text:'Haan, main taiyaar hoon — aap sunaiye.'}];
+function renderLines(){document.getElementById('lines').innerHTML=lines.map((l,i)=>'<div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap"><select onchange="lines['+i+'].sp=this.value" style="width:110px;margin:0"><option '+(l.sp==='A'?'selected':'')+'>A</option><option '+(l.sp==='B'?'selected':'')+'>B</option></select><select onchange="lines['+i+'].voice=this.value" style="width:140px;margin:0">'+KOKORO.map(v=>'<option '+(l.voice===v?'selected':'')+'>'+v+'</option>').join('')+'</select><input value="'+escapeHtml(l.text)+'" oninput="lines['+i+'].text=this.value" style="flex:1;min-width:180px;margin:0" placeholder="Line…"></div>').join('');}
+function addLine(){lines.push({sp:lines.length%2?'B':'A',voice:KOKORO[0],text:''});renderLines();}
+function playEpisode(){speechSynthesis.cancel();lines.filter(l=>l.text.trim()).forEach(l=>speechSynthesis.speak(new SpeechSynthesisUtterance(clean(l.text))));}
+renderLines();
+</script>
+</body>
+</html>
